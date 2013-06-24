@@ -1,0 +1,15 @@
+<%=  form_for ([@album, @album.photos.build]) do |photo_form| %>
+  
+  <div class = "field">
+  <%= photo_form.file_field :image %>
+  </div>
+  <div class="field">
+    <%= photo_form.label :tag_list, 'Tags (seperated by commas)' %><br />
+    <%= photo_form.text_field :tag_list %>
+  </div>
+  <br>
+   <div class="actions">
+    <%= photo_form.submit 'Upload'%>
+	
+  </div>
+<% end %>

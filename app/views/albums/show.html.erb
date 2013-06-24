@@ -1,0 +1,33 @@
+<!--<p id="notice"><%= notice %></p>
+<%= image_tag @album.thumb.url(:thumb) %>
+-->
+<p>
+  <font size="6"><b>Album:</b></font>
+  <font size="6"><%= @album.name %></font>
+</p>  
+<hr>
+<br>
+
+<table cellpadding="10">
+   <tr>
+   <% @album.photos.each do |photo| %>
+ 		
+  			
+   			<td>
+   				<table>
+   				<tr>
+   					<td><%= link_to (image_tag (photo.image.url(:medium)),{:size =>"100x100"}), photo.image.url  %></td></tr>
+				<tr><td>Tags: <%= raw photo.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></td></tr>
+				</table>
+			</td>	
+				
+		
+	<% end %>
+  </tr>	
+</table>
+<%= render "photos/upload" %>
+<br>
+<br>
+<br>
+<%= link_to 'Edit Album', edit_album_path(@album) %> |
+<%= link_to 'Back to Albums', albums_path %> |

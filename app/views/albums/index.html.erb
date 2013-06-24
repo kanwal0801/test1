@@ -1,0 +1,51 @@
+<h1>Listing Albums</h1>
+<hr>
+<br>
+<table cellpadding="15">
+<tr>
+<% @album.each do |album| %>
+		<td>
+			<table>	
+			<tr>
+				<td><%= link_to ((image_tag (album.photos[0].image.url(:medium)),{:size =>"100x100"}), album)unless album.photos[0].nil?  %>
+			<!-- <td><%= link_to (image_tag (album.thumb.url(:medium)),{:size =>"30x30"}), album.thumb.url  %></td>
+	    	<td><%= link_to 'Show', album %></td>/-->
+				</td>
+			</tr>
+		
+			<tr>
+				<td> <b><%= link_to (album.name), album %></b> </td>
+				
+			</tr>
+			
+			<td><%= link_to 'Edit', edit_album_path(album) %>
+    	<%= link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+		
+		</tr>
+		</table>
+		</td>
+<%end%>
+</tr>
+</table>
+<br>
+<%= link_to 'New Album', new_album_path %>
+<!--
+<table border="1" cellpadding="10">
+	<tr>
+		<th>Name</th>
+		<th>Thumbnail</th>
+		<th></th>
+		<th></th>
+	</tr>
+	
+<% @album.each do |album| %>
+	<tr>
+		<td><%= album.name %></td>
+		<td><%= link_to ((image_tag (album.photos[0].image.url(:medium)),{:size =>"50x50"}), album)unless album.photos[0].nil?  %></td>
+		<td><%= link_to 'Edit', edit_album_path(album) %></td>
+    	<td><%= link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+	</tr>
+	
+<%end%>
+</table>
+-->
